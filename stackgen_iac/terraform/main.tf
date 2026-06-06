@@ -1,0 +1,96 @@
+module "stackgen_270b16d5-914e-5cc1-8cc6-81619c2c526a" {
+  source                               = "./modules/aws_vpc"
+  cidr_block                           = "10.0.0.0/16"
+  enable_dns_hostnames                 = false
+  enable_dns_support                   = true
+  enable_network_address_usage_metrics = false
+  instance_tenancy                     = "default"
+  tags = {
+    Name = "stackgen-poc-vpc"
+  }
+}
+
+module "stackgen_694ac405-9d49-5052-b9ca-3af40be8440f" {
+  source                   = "./modules/aws_ecs_cluster"
+  configuration            = []
+  name                     = "stackgen-poc"
+  service_connect_defaults = []
+  setting                  = []
+  tags                     = null
+  depends_on               = [module.stackgen_270b16d5-914e-5cc1-8cc6-81619c2c526a]
+}
+
+module "stackgen_9256f072-0431-516f-9808-5e5068cbc0f9" {
+  source                                = "./modules/aws_db_instance"
+  allocated_storage                     = null
+  allow_major_version_upgrade           = null
+  apply_immediately                     = false
+  auto_minor_version_upgrade            = true
+  availability_zone                     = null
+  backup_retention_period               = 0
+  backup_target                         = "region"
+  backup_window                         = null
+  blue_green_update                     = []
+  ca_cert_identifier                    = null
+  character_set_name                    = null
+  copy_tags_to_snapshot                 = false
+  custom_iam_instance_profile           = null
+  customer_owned_ip_enabled             = null
+  db_name                               = null
+  db_subnet_group_name                  = null
+  dedicated_log_volume                  = null
+  delete_automated_backups              = true
+  deletion_protection                   = false
+  domain                                = null
+  domain_auth_secret_arn                = null
+  domain_dns_ips                        = null
+  domain_fqdn                           = null
+  domain_iam_role_name                  = null
+  domain_ou                             = null
+  enabled_cloudwatch_logs_exports       = null
+  engine                                = "postgres"
+  engine_lifecycle_support              = "open-source-rds-extended-support"
+  engine_version                        = null
+  final_snapshot_identifier             = null
+  iam_database_authentication_enabled   = null
+  identifier                            = null
+  identifier_prefix                     = null
+  instance_class                        = "db.t3.micro"
+  iops                                  = null
+  kms_key_id                            = null
+  license_model                         = null
+  maintenance_window                    = null
+  manage_master_user_password           = null
+  master_user_secret_kms_key_id         = null
+  max_allocated_storage                 = null
+  monitoring_interval                   = 0
+  monitoring_role_arn                   = null
+  multi_az                              = null
+  nchar_character_set_name              = null
+  network_type                          = null
+  option_group_name                     = null
+  parameter_group_name                  = null
+  password                              = null
+  performance_insights_enabled          = false
+  performance_insights_kms_key_id       = null
+  performance_insights_retention_period = null
+  port                                  = null
+  publicly_accessible                   = false
+  replica_mode                          = null
+  replicate_source_db                   = null
+  restore_to_point_in_time              = []
+  s3_import                             = []
+  skip_final_snapshot                   = null
+  snapshot_identifier                   = null
+  storage_encrypted                     = false
+  storage_throughput                    = null
+  storage_type                          = null
+  tags                                  = null
+  timeouts                              = null
+  timezone                              = null
+  upgrade_storage_config                = null
+  username                              = null
+  vpc_security_group_ids                = null
+  depends_on                            = [module.stackgen_270b16d5-914e-5cc1-8cc6-81619c2c526a]
+}
+
