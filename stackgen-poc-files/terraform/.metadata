@@ -1,0 +1,7 @@
+{
+  "app_stack_name": "Demo-tfstate-appStack-70aada9e",
+  "iac_type": "Terraform",
+  "provider": "aws",
+  "multi_env": false,
+  "exporter": "terraform"
+}
