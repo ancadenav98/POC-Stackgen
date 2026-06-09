@@ -1,7 +1,0 @@
-{
-  "app_stack_name": "poc-test-discovery-appStack-841df8f8",
-  "iac_type": "Terraform",
-  "provider": "aws",
-  "multi_env": false,
-  "exporter": "terraform"
-}
